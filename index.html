@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sabir Labs — software, AI, and games. Kraków.</title>
+<meta name="description" content="Sabir Labs is an independent studio in Kraków building AI systems, learning tools, and games.">
+<meta property="og:title" content="Sabir Labs">
+<meta property="og:description" content="An independent studio in Kraków building AI systems, learning tools, and games.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sabirlabs.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Archivo:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D141C;
+    --ink-raised:#141F2B;
+    --paper:#E8DFCB;
+    --paper-dim:#9AA6AF;
+    --verdigris:#5FA79A;
+    --brass:#C2903C;
+    --rule:rgba(232,223,203,.16);
+
+    --display:"Fraunces",Georgia,serif;
+    --body:"Archivo",system-ui,sans-serif;
+    --utility:"IBM Plex Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box}
+
+  html,body{margin:0;padding:0}
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background-image:radial-gradient(120% 80% at 12% 0%,var(--ink-raised) 0%,var(--ink) 62%);
+  }
+
+  .wrap{
+    width:100%;
+    max-width:52rem;
+    margin:0 auto;
+    padding:clamp(2.5rem,7vw,5.5rem) clamp(1.5rem,6vw,3rem);
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:clamp(2.25rem,5vw,3.5rem);
+  }
+
+  /* ---- wordmark ---------------------------------------------------- */
+
+  .wordmark{
+    font-family:var(--display);
+    font-weight:300;
+    font-size:clamp(3.2rem,13vw,7rem);
+    line-height:.92;
+    letter-spacing:-.035em;
+    margin:0;
+    font-variation-settings:"SOFT" 0,"WONK" 1;
+  }
+
+  .wordmark .labs{
+    color:var(--paper-dim);
+    font-style:italic;
+  }
+
+  /* ---- lexicon entry (the signature block) ------------------------- */
+
+  .entry{
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:1.5rem 0;
+    display:grid;
+    gap:1.1rem;
+  }
+
+  .headword{
+    font-family:var(--utility);
+    font-size:.8rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--verdigris);
+    margin:0;
+  }
+
+  .headword .pos{color:var(--paper-dim);text-transform:none;letter-spacing:.04em}
+
+  .gloss{
+    font-family:var(--display);
+    font-weight:300;
+    font-size:clamp(1.15rem,2.6vw,1.5rem);
+    line-height:1.45;
+    margin:0;
+    max-width:36ch;
+  }
+
+  .gloss em{color:var(--brass);font-style:italic}
+
+  /* descent chain */
+  .descent{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:.55rem .8rem;
+    font-family:var(--utility);
+    font-size:.9rem;
+  }
+
+  .descent li{display:flex;align-items:baseline;gap:.8rem}
+
+  .descent li::after{content:"→";color:var(--verdigris);opacity:.65}
+
+  .descent li:last-child::after{content:""}
+
+  .descent .lang{
+    color:var(--paper-dim);
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-right:.4rem;
+  }
+
+  .descent .term{color:var(--paper)}
+
+  .descent li:last-child .term{color:var(--brass)}
+
+  /* ---- statement + contact ----------------------------------------- */
+
+  .statement{
+    font-size:clamp(1rem,2.2vw,1.15rem);
+    max-width:44ch;
+    margin:0;
+    color:var(--paper);
+  }
+
+  .contact{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem 2rem;
+    align-items:baseline;
+    font-family:var(--utility);
+    font-size:.92rem;
+  }
+
+  a{
+    color:var(--verdigris);
+    text-decoration:none;
+    border-bottom:1px solid rgba(95,167,154,.4);
+    padding-bottom:.1em;
+    transition:color .18s ease,border-color .18s ease;
+  }
+
+  a:hover{color:var(--brass);border-bottom-color:var(--brass)}
+
+  a:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  footer{
+    border-top:1px solid var(--rule);
+    padding:1.25rem clamp(1.5rem,6vw,3rem);
+    max-width:52rem;
+    margin:0 auto;
+    width:100%;
+    font-family:var(--utility);
+    font-size:.75rem;
+    letter-spacing:.06em;
+    color:var(--paper-dim);
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem 1.5rem;
+    justify-content:space-between;
+  }
+
+  /* ---- entrance ----------------------------------------------------- */
+
+  .rise{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
+  .rise:nth-child(1){animation-delay:.05s}
+  .rise:nth-child(2){animation-delay:.20s}
+  .rise:nth-child(3){animation-delay:.35s}
+  .rise:nth-child(4){animation-delay:.50s}
+
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  @media (prefers-reduced-motion:reduce){
+    .rise{animation:none;opacity:1;transform:none}
+    a{transition:none}
+  }
+</style>
+</head>
+<body>
+
+  <main class="wrap">
+
+    <h1 class="wordmark rise">Sabir<br><span class="labs">Labs</span></h1>
+
+    <section class="entry rise" aria-label="Origin of the name">
+      <p class="headword">sabir <span class="pos">/ˈsa.bir/ n.</span></p>
+      <p class="gloss">The <em>lingua franca</em> of the Mediterranean — the shared tongue traders used when they had no language in common.</p>
+      <ul class="descent">
+        <li><span class="lang">lat.</span><span class="term">sapere</span></li>
+        <li><span class="lang">esp.</span><span class="term">saber</span></li>
+        <li><span class="lang">—</span><span class="term">sabir</span></li>
+      </ul>
+    </section>
+
+    <p class="statement rise">An independent studio in Kraków, building AI systems, learning tools, and games.</p>
+
+    <div class="contact rise">
+      <a href="mailto:hello@sabirlabs.com">hello@sabirlabs.com</a>
+      <a href="https://github.com/SabirLabs">github.com/SabirLabs</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>Kraków, Poland</span>
+    <span>To know — to make things that know</span>
+  </footer>
+
+</body>
+</html>
